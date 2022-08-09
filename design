@@ -1,0 +1,34 @@
+Profile:
+    name:
+    sobreNone:
+    idade:
+    git:
+    linkedin:
+
+coreSkills:
+    skill:
+    nivel:
+
+otherSkills:
+    skill:
+    nivel:
+
+workExperience:
+    id:
+    timeRange:
+    officename:
+    department:
+    description:
+    complements:
+        - idWork:
+        - idItem:
+        - complemtText:
+
+latestWorks:
+    id:
+    workTilte:
+    description:
+    isRedirect:
+    linkRedirect:
+    imageBackground:
+
