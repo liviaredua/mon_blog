@@ -31,38 +31,45 @@
   <header class="ds-header" id="site-header">
     <div class="container">
       <div class="ds-header-inner">
-        <nav class="navbar navbar-light bg-lignt navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand ds-logo" href="about.html">
-              <span>LR</span>{{profile.first_name}} {{profile.last_name}}
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ">
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#">NEWS</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#">TOOLS</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#">MANAGEMENT</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#">HOW I AM?</a>
-                </li>
-              </ul>
+        <div class="col-11">
+          <nav class="navbar navbar-light bg-lignt navbar-expand-lg">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="col-7">
+                <a class="navbar-brand ds-logo" href="about.html">
+                  <span>LR</span>{{profile.first_name}} {{profile.last_name}}
+                </a>
+              </div>
+              <div class="col-5">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ">
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" href="#">NEWS</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" href="#">TOOLS</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" href="#">MANAGEMENT</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" href="#">HOW I AM?</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </nav>
-
+          </nav>
+        </div>
         <!-- social -->
-        <ul class="ds-social">
-          <li><a href="{{profile.gitHub}}" target="_blank"><i class="ri-github-fill"></i></a></li>
-          <li><a href="{{profile.linkedin}}" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
-        </ul>
+        <div class="col-1">
+          <ul class="ds-social row">
+            <li class="row justify-content-center"><a href="{{profile.gitHub}}" target="_blank"><i class="ri-github-fill"></i></a></li>
+            <li class="row justify-content-center"><a href="{{profile.linkedin}}" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+          </ul>
+        </div>
         <!-- social -->
       </div>
     </div>
@@ -203,7 +210,7 @@
                 <p>{{lw.description}}</p>
                 {% endautoescape %}
               </section>
-              <a href="works-setails.html" class="ds-button mt-2 mb-5">Details</a>
+              <a href={% url 'detail' %} class="ds-button mt-2 mb-5">Details</a>
             </div>
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
               <figure><img src="../static/assets/images/work-1.jpg"></figure>

@@ -68,3 +68,17 @@ def download(request):
             return response
     
     return response
+
+
+def detail(request):
+    profile = Profile.objects.get(id=1)
+    data = {
+        'profile':{
+            'first_name':profile.first_name, 
+            'last_name':profile.last_name,
+            'birth':profile.birth,
+            'linkedin':profile.linkedin,
+            'gitHub':profile.gitHub
+            }
+    }
+    return render(request, 'details.html', data)
