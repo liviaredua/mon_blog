@@ -5,6 +5,13 @@ Profile:
     git:
     linkedin:
 
+About:
+    salutation:
+    textSalutation:
+    abautMe:
+
+
+
 coreSkills:
     skill:
     nivel:

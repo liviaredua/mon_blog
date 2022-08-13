@@ -9,6 +9,12 @@ class Profile(models.Model):
     gitHub = models.CharField('GitHub',max_length=50)
 
 
+class About(models.Model):
+    salutation = models.CharField('salutation',max_length=30)
+    textSalutation = models.CharField('Text Salutation',max_length=100)
+    aboutMe = models.TextField('About Me')
+
+
 class CoreSkills(models.Model):
     skill = models.CharField('Skill',max_length=30)
     level = models.CharField('Level',max_length=30)
@@ -29,7 +35,7 @@ class WorkExperience(models.Model):
     description = models.TextField('Description')
 
     def __str__(self):
-        return  str(self.description)[0:15]
+        return  f'Work_{self.id}'
 
 
 class WorkExperienceComplements(models.Model):
@@ -44,7 +50,6 @@ class LatestWorks(models.Model):
     workTilte = models.CharField('Work Tilte ',max_length=30)
     description = models.TextField('Description')
     isRedirect: models.BooleanField(default=False)
-    linkRedirect = models.CharField('Work Tilte ',max_length=100, default='#')
 
     def __str__(self):
         return  str(self.workTilte)
