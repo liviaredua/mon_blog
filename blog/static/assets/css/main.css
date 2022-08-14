@@ -127,7 +127,6 @@ span.ds-department{ color: #373737; font-weight: 500; font-size: 18px; padding-b
 @media (max-width: 768px) {
 	.ds-header,.ds-header.ds-fixed-header{ padding: 15px 0; }
 	.ds-banner,.ds-about-section,.ds-skills-section,.ds-experience-section,.ds-work-section,.ds-work-details-section{ padding-left: 10px; padding-right: 10px; }
-	.ds-logo{ font-size: 0; }
 	.ds-banner figure{ padding: 30px 0; }
 	.ds-banner section{ padding-left: 0;padding-right: 0; }
 	.ds-banner section h1 span{ padding-bottom: 0; }
@@ -159,6 +158,16 @@ span.ds-department{ color: #373737; font-weight: 500; font-size: 18px; padding-b
 
 @media (min-width: 768px) and (max-width: 991px) {
 	.ds-work-list section{ padding-right: 30px; }
+
+}
+
+@media (min-width: 355px){
+	.ds-logo{ font-size: 15px; }
+
+}
+
+@media (max-width: 355px){
+	.ds-logo{ font-size: 0; }
 
 }
 
