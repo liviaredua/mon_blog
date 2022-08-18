@@ -38,7 +38,7 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="col-7">
-                <a class="navbar-brand ds-logo" href="about.html">
+                <a class="navbar-brand ds-logo" href={% url 'about' %}>
                   <span>LR</span>{{profile.first_name}} {{profile.last_name}}
                 </a>
               </div>
@@ -46,10 +46,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav ">
                     <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">NEWS</a>
+                      <a class="nav-link text-dark" href={% url 'news' %}>NEWS</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">TOOLS</a>
+                      <a class="nav-link text-dark" href={% url 'tools' %}>TOOLS</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link text-dark" href="#">MANAGEMENT</a>

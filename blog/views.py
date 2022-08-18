@@ -82,3 +82,34 @@ def detail(request):
             }
     }
     return render(request, 'details.html', data)
+
+def news(request):
+    return render(request, 'news.html')
+
+def tools(request):
+    WorkExperience_col1, WorkExperience_col2, nCols= formatExperience()
+
+    data = {
+        'workExperience_col_1':[
+                            {
+                            'timeRange': obj.timeRange,
+                            'officename': obj.officename,
+                            'department': obj.department,
+                            'description': obj.description, 
+                            'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
+                            } for obj in WorkExperience_col1
+                        ],
+
+        'workExperience_col_2':[
+                            {
+                            'timeRange': obj.timeRange,
+                            'officename': obj.officename,
+                            'department': obj.department,
+                            'description': obj.description, 
+                            'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
+                            } for obj in WorkExperience_col2
+                        ] if nCols else None,
+        'latestWorks': [{'title':obj.workTilte, 'description':obj.description} for obj in LatestWorks.objects.all()] 
+
+    }
+    return render(request, 'tools.html', data)
