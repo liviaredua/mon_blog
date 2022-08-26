@@ -38,7 +38,7 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="col-7">
-                <a class="navbar-brand ds-logo" href={% url 'about' %}>
+                <a class="navbar-brand ds-logo" href={% url 'news' %}>
                   <span>LR</span>{{profile.first_name}} {{profile.last_name}}
                 </a>
               </div>
@@ -55,7 +55,7 @@
                       <a class="nav-link text-dark" href="#">MANAGEMENT</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">HOW I AM?</a>
+                      <a class="nav-link text-dark" href={% url 'about' %}>HOW I AM?</a>
                     </li>
                   </ul>
                 </div>

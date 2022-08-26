@@ -40,7 +40,7 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="col-7">
-                                <a class="navbar-brand ds-logo" href={% url 'about' %}>
+                                <a class="navbar-brand ds-logo" href={% url 'news' %}>
                                     <span>LR</span>{{profile.first_name}} {{profile.last_name}}
                                 </a>
                             </div>
@@ -57,7 +57,7 @@
                                             <a class="nav-link text-dark" href="#">MANAGEMENT</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-dark" href="#">HOW I AM?</a>
+                                            <a class="nav-link text-dark" href={% url 'about' %}>HOW I AM?</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -98,7 +98,6 @@
                                                 <p>{{lw.description}}</p>
                                                 {% endautoescape %}
                                             </section>
-                                            <a href={% url 'detail' %} class="ds-button mt-2 mb-5">Details</a>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
                                             <figure><img src="../static/assets/images/work-1.jpg"></figure>
@@ -112,100 +111,230 @@
                     <!-- Tools End-->
 
                     <!-- Topics-->
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                        </div>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-md-2" style="margin: 0 auto 0 auto;">
-                                        <div
-                                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                            <div class="col p-4 d-flex flex-column position-static">
-                                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                                <h5 class="mb-0">Featured post</h5>
-                                                <p class="card-text mb-auto">This is a wider card with supporting text
-                                                    below as a natural lead-in to additional content.</p>
-                                                <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
-                                                    class="stretched-link">Continue reading</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2" style="margin: 0 auto 0 auto;">
-                                        <div
-                                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                            <div class="col p-4 d-flex flex-column position-static">
-                                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                                <h5 class="mb-0">Featured post</h5>
-                                                <p class="card-text mb-auto">This is a wider card with supporting text
-                                                    below as a natural lead-in to additional content.</p>
-                                                <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
-                                                    class="stretched-link">Continue reading</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2" style="margin: 0 auto 0 auto;">
-                                        <div
-                                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                            <div class="col p-4 d-flex flex-column position-static">
-                                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                                <h5 class="mb-0">Featured post</h5>
-                                                <p class="card-text mb-auto">This is a wider card with supporting text
-                                                    below as a natural lead-in to additional content.</p>
-                                                <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
-                                                    class="stretched-link">Continue reading</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2" style="margin: 0 auto 0 auto;">
-                                        <div
-                                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                            <div class="col p-4 d-flex flex-column position-static">
-                                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                                <h5 class="mb-0">Featured post</h5>
-                                                <p class="card-text mb-auto">This is a wider card with supporting text
-                                                    below as a natural lead-in to additional content.</p>
-                                                <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
-                                                    class="stretched-link">Continue reading</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2" style="margin: 0 auto 0 auto;">
-                                        <div
-                                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                            <div class="col p-4 d-flex flex-column position-static">
-                                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                                <h5 class="mb-0">Featured post</h5>
-                                                <p class="card-text mb-auto">This is a wider card with supporting text
-                                                    below as a natural lead-in to additional content.</p>
-                                                <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
-                                                    class="stretched-link">Continue reading</a>
-                                            </div>
+                          <div class="carousel-item active" data-bs-interval="2000">
+                            <div class="row">
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">X</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">X</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">X</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">X</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">X</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            
+                          </div>
+                          <div class="carousel-item" data-bs-interval="2000">
+                            <div class="row">
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="carousel-item" data-bs-interval="2000">
+                            <div class="row">
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XXX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XXX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XXX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XXX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="margin: 0 auto 0 auto;">
+                                    <div
+                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            <h5 class="mb-0">XXX</h5>
+                                            <p class="card-text mb-auto">This is a wider card with supporting text
+                                                below as a natural lead-in to additional content.</p>
+                                            <a href="https://getbootstrap.com/docs/5.2/examples/blog/#"
+                                                class="stretched-link">Continue reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                      </div>
                     <!--Topics end-->
+                    <!-- Pagination -->
+
+                    <nav aria-label="Page navigation example" class="mb-5 mt-5">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                    <!-- Pagination end-->
 
                 </div>
             </div>

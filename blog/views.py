@@ -84,12 +84,30 @@ def detail(request):
     return render(request, 'details.html', data)
 
 def news(request):
-    return render(request, 'news.html')
+    profile = Profile.objects.get(id=1)
+    data = {
+        'profile':{
+            'first_name':profile.first_name, 
+            'last_name':profile.last_name,
+            'birth':profile.birth,
+            'linkedin':profile.linkedin,
+            'gitHub':profile.gitHub
+            }
+    }
+    return render(request, 'news.html', data)
 
 def tools(request):
+    profile = Profile.objects.get(id=1)
     WorkExperience_col1, WorkExperience_col2, nCols= formatExperience()
 
     data = {
+        'profile':{
+            'first_name':profile.first_name, 
+            'last_name':profile.last_name,
+            'birth':profile.birth,
+            'linkedin':profile.linkedin,
+            'gitHub':profile.gitHub
+            },
         'workExperience_col_1':[
                             {
                             'timeRange': obj.timeRange,
