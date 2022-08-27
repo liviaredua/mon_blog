@@ -1,4 +1,4 @@
-from pyexpat import model
+
 from django.db import models
 
 class Profile(models.Model):
@@ -54,7 +54,15 @@ class LatestWorks(models.Model):
     def __str__(self):
         return  str(self.workTilte)
 
+class Details(models.Model):
+    idWK = models.ForeignKey(LatestWorks, on_delete=models.CASCADE)
+    title = models.CharField('Tile',max_length=50)
+    subtitle = models.CharField('Subtile',max_length=30, blank=True)
+    year = models.DateField(auto_now=True)
+    description = models.TextField('Description')
     
+    def __str__(self):
+        return  str(self.title)
 
 
 

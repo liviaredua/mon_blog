@@ -1,7 +1,7 @@
 from distutils import core
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Profile, CoreSkills, OtherSkills, WorkExperience, WorkExperienceComplements, LatestWorks, About
+from .models import Profile, CoreSkills, OtherSkills, WorkExperience, WorkExperienceComplements, LatestWorks, About, Details
 
 
 def formatExperience():
@@ -17,46 +17,52 @@ def formatExperience():
 
     return (col1, col2, nCols)
 
+
 def about(request):
     profile = Profile.objects.get(id=1)
     about = About.objects.get(id=1)
-    WorkExperience_col1, WorkExperience_col2, nCols= formatExperience()
+    WorkExperience_col1, WorkExperience_col2, nCols = formatExperience()
 
     data = {
-        'profile':{
-            'first_name':profile.first_name, 
-            'last_name':profile.last_name,
-            'birth':profile.birth,
-            'linkedin':profile.linkedin,
-            'gitHub':profile.gitHub
-            },
+        'profile': {
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
+            'birth': profile.birth,
+            'linkedin': profile.linkedin,
+            'gitHub': profile.gitHub
+        },
         'about': {
-            'salutation':about.salutation,
-            'textSalutation':about.textSalutation,
+            'salutation': about.salutation,
+            'textSalutation': about.textSalutation,
             'aboutMe': about.aboutMe
         },
-        'coreSkills' : [{'skill':obj.skill, 'level':obj.level} for obj in CoreSkills.objects.all()],
-        'OtherSkills' : [{'skill':obj.skill, 'level':obj.level} for obj in OtherSkills.objects.all()],
-        'workExperience_col_1':[
-                            {
-                            'timeRange': obj.timeRange,
-                            'officename': obj.officename,
-                            'department': obj.department,
-                            'description': obj.description, 
-                            'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
-                            } for obj in WorkExperience_col1
-                        ],
+        'coreSkills': [{'skill': obj.skill, 'level': obj.level} for obj in CoreSkills.objects.all()],
+        'OtherSkills': [{'skill': obj.skill, 'level': obj.level} for obj in OtherSkills.objects.all()],
+        'workExperience_col_1': [
+            {
+                'timeRange': obj.timeRange,
+                'officename': obj.officename,
+                'department': obj.department,
+                'description': obj.description,
+                'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
+            } for obj in WorkExperience_col1
+        ],
 
-        'workExperience_col_2':[
-                            {
-                            'timeRange': obj.timeRange,
-                            'officename': obj.officename,
-                            'department': obj.department,
-                            'description': obj.description, 
-                            'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
-                            } for obj in WorkExperience_col2
-                        ] if nCols else None,
-        'latestWorks': [{'title':obj.workTilte, 'description':obj.description} for obj in LatestWorks.objects.all()] 
+        'workExperience_col_2': [
+            {
+                'timeRange': obj.timeRange,
+                'officename': obj.officename,
+                'department': obj.department,
+                'description': obj.description,
+                'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
+            } for obj in WorkExperience_col2
+        ] if nCols else None,
+        'latestWorks': [
+            {
+                'title': obj.workTilte,
+                'description': obj.description,
+                'idWK': obj.id
+            } for obj in LatestWorks.objects.all()]
 
     }
     return render(request, 'about.html', data)
@@ -64,70 +70,81 @@ def about(request):
 
 def download(request):
     with open('blog/media/cv.pdf', 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/pdf")
-            return response
-    
+        response = HttpResponse(fh.read(), content_type="application/pdf")
+        return response
+
     return response
 
 
-def detail(request):
+def detail(request, idWK):
     profile = Profile.objects.get(id=1)
+    choisenItem = Details.objects.get(idWK=idWK)
+
+
     data = {
-        'profile':{
-            'first_name':profile.first_name, 
-            'last_name':profile.last_name,
-            'birth':profile.birth,
-            'linkedin':profile.linkedin,
-            'gitHub':profile.gitHub
-            }
+        'profile': {
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
+            'birth': profile.birth,
+            'linkedin': profile.linkedin,
+            'gitHub': profile.gitHub
+        },
+        'detail': {
+            'title': choisenItem.title,
+            'subtitle': choisenItem.subtitle,
+            'year': choisenItem.year,
+            'description': choisenItem.description
+        }
     }
     return render(request, 'details.html', data)
+
 
 def news(request):
     profile = Profile.objects.get(id=1)
     data = {
-        'profile':{
-            'first_name':profile.first_name, 
-            'last_name':profile.last_name,
-            'birth':profile.birth,
-            'linkedin':profile.linkedin,
-            'gitHub':profile.gitHub
-            }
+        'profile': {
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
+            'birth': profile.birth,
+            'linkedin': profile.linkedin,
+            'gitHub': profile.gitHub
+        }
     }
     return render(request, 'news.html', data)
 
+
 def tools(request):
     profile = Profile.objects.get(id=1)
-    WorkExperience_col1, WorkExperience_col2, nCols= formatExperience()
+    WorkExperience_col1, WorkExperience_col2, nCols = formatExperience()
 
     data = {
-        'profile':{
-            'first_name':profile.first_name, 
-            'last_name':profile.last_name,
-            'birth':profile.birth,
-            'linkedin':profile.linkedin,
-            'gitHub':profile.gitHub
-            },
-        'workExperience_col_1':[
-                            {
-                            'timeRange': obj.timeRange,
-                            'officename': obj.officename,
-                            'department': obj.department,
-                            'description': obj.description, 
-                            'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
-                            } for obj in WorkExperience_col1
-                        ],
+        'profile': {
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
+            'birth': profile.birth,
+            'linkedin': profile.linkedin,
+            'gitHub': profile.gitHub
+        },
+        'workExperience_col_1': [
+            {
+                'timeRange': obj.timeRange,
+                'officename': obj.officename,
+                'department': obj.department,
+                'description': obj.description,
+                'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
+            } for obj in WorkExperience_col1
+        ],
 
-        'workExperience_col_2':[
-                            {
-                            'timeRange': obj.timeRange,
-                            'officename': obj.officename,
-                            'department': obj.department,
-                            'description': obj.description, 
-                            'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
-                            } for obj in WorkExperience_col2
-                        ] if nCols else None,
-        'latestWorks': [{'title':obj.workTilte, 'description':obj.description} for obj in LatestWorks.objects.all()] 
+        'workExperience_col_2': [
+            {
+                'timeRange': obj.timeRange,
+                'officename': obj.officename,
+                'department': obj.department,
+                'description': obj.description,
+                'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
+            } for obj in WorkExperience_col2
+        ] if nCols else None,
+        'latestWorks': [{'title': obj.workTilte, 'description': obj.description} for obj in LatestWorks.objects.all()]
 
     }
     return render(request, 'tools.html', data)
