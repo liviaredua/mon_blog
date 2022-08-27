@@ -65,5 +65,21 @@ class Details(models.Model):
         return  str(self.title)
 
 
+class Tools(models.Model):
+    tool = models.CharField('Tool', max_length=50)
+    title = models.CharField('Tile',max_length=50, blank=True)
+    description = models.TextField('Description')
+
+    def __str__(self):
+        return  str(self.tool)
+
+class ToolsTopics(models.Model):
+    idToll = models.ForeignKey(Tools, on_delete=models.CASCADE)
+    title = models.CharField('Tile',max_length=50)
+    year = models.DateField(auto_now=True)
+    description = models.CharField('Description', max_length=120)
+
+    def __str__(self):
+        return  str(self.title)
 
 

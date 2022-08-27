@@ -1,8 +1,7 @@
-from distutils import core
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Profile, CoreSkills, OtherSkills, WorkExperience, WorkExperienceComplements, LatestWorks, About, Details
-
+from .models import Profile, CoreSkills, OtherSkills, WorkExperience, WorkExperienceComplements, LatestWorks, About, Details, Tools, ToolsTopics
+from django.core.paginator import Paginator
 
 def formatExperience():
     RawExperience = WorkExperience.objects.all()
@@ -115,7 +114,10 @@ def news(request):
 
 def tools(request):
     profile = Profile.objects.get(id=1)
-    WorkExperience_col1, WorkExperience_col2, nCols = formatExperience()
+    tool = Tools.objects.all()
+    tool_pag = Paginator(tool, 1)
+    page_number = request.GET.get('page')
+    page_obj = tool_pag.get_page(page_number)
 
     data = {
         'profile': {
@@ -125,26 +127,6 @@ def tools(request):
             'linkedin': profile.linkedin,
             'gitHub': profile.gitHub
         },
-        'workExperience_col_1': [
-            {
-                'timeRange': obj.timeRange,
-                'officename': obj.officename,
-                'department': obj.department,
-                'description': obj.description,
-                'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
-            } for obj in WorkExperience_col1
-        ],
-
-        'workExperience_col_2': [
-            {
-                'timeRange': obj.timeRange,
-                'officename': obj.officename,
-                'department': obj.department,
-                'description': obj.description,
-                'complements': [comp.complemtText for comp in WorkExperienceComplements.objects.filter(idWork_id=obj.id)]
-            } for obj in WorkExperience_col2
-        ] if nCols else None,
-        'latestWorks': [{'title': obj.workTilte, 'description': obj.description} for obj in LatestWorks.objects.all()]
-
+        'page_obj': page_obj
     }
     return render(request, 'tools.html', data)
