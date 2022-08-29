@@ -63,3 +63,5 @@ if __name__ == '__main__':
         print(tp['link'])
         print(tp['date'])
         print('========================')
+    
+    print(requests.get(news.url_base_google).text)

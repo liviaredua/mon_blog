@@ -7,6 +7,6 @@ urlpatterns = [
     path('cv/', download),
     path('details/<int:idWK>', detail, name='detail'),
     path('news/', news, name='news'),
-    path('', news, name='news'),
+    path('',  about, name='about'),
     path('tools/', tools, name='tools')
 ]
