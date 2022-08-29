@@ -107,7 +107,6 @@ def news(request):
     buscas = ['+'.join(i.split(' ')) for i in buscas]
     for busca in buscas:
         news = News(busca)
-        print(news.url_base_google)
         news.fillTopicsNews()
         tp = News.selectTopics(news.topics, 1)[0]
         listTopics.append(tp)

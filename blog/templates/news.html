@@ -121,14 +121,14 @@
                   <h3 class="mb-0">{{tp.title}}</h3>
                   <div class="mb-1 text-muted">{{tp.dade}}</div>
                   <p class="card-text mb-auto">{{tp.description}}</p>
-                  <a href="#" class="stretched-link mt-2">Continue reading</a>
+                  <a href="{{tp.link}}" class="stretched-link mt-2">Continue reading</a>
                 </div>
               </div>
             </div>
             {% endfor %}
           </div>
           <!-- Card 2-->
-          <div class="row mb-5 mt-2"></div>
+          <div class="row"></div>
           {% for tp in topics_line2 %}
           <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -136,7 +136,7 @@
                 <h3 class="mb-0">{{tp.title}}</h3>
                 <div class="mb-1 text-muted">{{tp.dade}}</div>
                 <p class="card-text mb-auto">{{tp.description}}</p>
-                <a href="#" class="stretched-link mt-2">Continue reading</a>
+                <a href="{{tp.link}}" class="stretched-link mt-2">Continue reading</a>
               </div>
             </div>
           </div>
