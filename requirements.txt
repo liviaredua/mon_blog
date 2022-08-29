@@ -4,3 +4,5 @@ whitenoise==6.2.0
 pytz==2022.1
 sqlparse==0.4.2
 django-stdimage==6.0.1
+requests==2.22.0
+beautifulsoup4==4.11.1
