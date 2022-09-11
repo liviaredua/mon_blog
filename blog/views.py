@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Profile, CoreSkills, OtherSkills, WorkExperience, WorkExperienceComplements, LatestWorks, About, Details, Tools, ToolsTopics
+from .models import Profile, CoreSkills, OtherSkills, WorkExperience, WorkExperienceComplements, LatestWorks, About, Details, Tools, ToolsTopics, Articles, DetailsArticles
 from django.core.paginator import Paginator
 
 from .NewsView import News
@@ -173,3 +173,46 @@ def tools(request):
         'topics': arr
     }
     return render(request, 'tools.html', data)
+
+
+def management(request):
+    profile = Profile.objects.get(id=1)
+    data = {
+        'profile': {
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
+            'birth': profile.birth,
+            'linkedin': profile.linkedin,
+            'gitHub': profile.gitHub
+        },
+        'articles': [
+            {
+                'title': obj.articleTilte,
+                'description': obj.description,
+                'idArt': obj.id
+            } for obj in Articles.objects.all()]
+
+    }
+    return render(request, 'management.html', data)
+
+
+def detailArt(request, idArt):
+    profile = Profile.objects.get(id=1)
+    choisenItem = DetailsArticles.objects.get(idArt=idArt)
+
+    data = {
+        'profile': {
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
+            'birth': profile.birth,
+            'linkedin': profile.linkedin,
+            'gitHub': profile.gitHub
+        },
+        'detail': {
+            'title': choisenItem.title,
+            'subtitle': choisenItem.subtitle,
+            'year': choisenItem.year,
+            'description': choisenItem.description
+        }
+    }
+    return render(request, 'detailsArt.html', data)

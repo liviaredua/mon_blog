@@ -83,3 +83,20 @@ class ToolsTopics(models.Model):
         return  str(self.title)
 
 
+class Articles(models.Model):
+    articleTilte = models.CharField('Article Tilte',max_length=30)
+    description = models.TextField('Description')
+    isRedirect: models.BooleanField(default=False)
+
+    def __str__(self):
+        return  str(self.articleTilte)
+
+class DetailsArticles(models.Model):
+    idArt = models.ForeignKey(Articles, on_delete=models.CASCADE)
+    title = models.CharField('Tile',max_length=50)
+    subtitle = models.CharField('Subtile',max_length=30, blank=True)
+    year = models.DateField(auto_now=True)
+    description = models.TextField('Description')
+    
+    def __str__(self):
+        return  str(self.title)
