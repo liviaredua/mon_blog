@@ -1,5 +1,8 @@
-
 from django.db import models
+from stdimage.models import StdImageField
+
+from django.db.models import signals
+from django.template.defaultfilters import slugify
 
 class Profile(models.Model):
     first_name = models.CharField('Nome',max_length=30)
@@ -49,7 +52,7 @@ class WorkExperienceComplements(models.Model):
 class LatestWorks(models.Model):
     workTilte = models.CharField('Work Tilte ',max_length=30)
     description = models.TextField('Description')
-    isRedirect: models.BooleanField(default=False)
+    isRedirect = models.BooleanField(default=False)
 
     def __str__(self):
         return  str(self.workTilte)
@@ -86,10 +89,17 @@ class ToolsTopics(models.Model):
 class Articles(models.Model):
     articleTilte = models.CharField('Article Tilte',max_length=30)
     description = models.TextField('Description')
-    isRedirect: models.BooleanField(default=False)
+    isRedirect = models.BooleanField(default=False)
+    image = StdImageField(upload_to='articles', variations={'thumbnail': {"width": 400, "height": 260, "crop": True}})
+    slug = models.SlugField('slug', max_length=100, blank=True, editable=False)
 
     def __str__(self):
         return  str(self.articleTilte)
+
+def slug_pre_save(signal, instance, sender, **kg):
+    instance.slug = slugify(instance.articleTilte)
+
+signals.pre_save.connect(slug_pre_save, sender=Articles)
 
 class DetailsArticles(models.Model):
     idArt = models.ForeignKey(Articles, on_delete=models.CASCADE)

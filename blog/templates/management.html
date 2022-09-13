@@ -97,7 +97,7 @@
               <a href={% url 'detailArt' art.idArt %} class="ds-button mt-2 mb-5">PLUS</a>
             </div>
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
-              <figure><img src="../static/assets/images/work-1.jpg"></figure>
+              <figure><img src="{{art.image}}"></figure>
             </div>
           </div>
           {% endfor %}

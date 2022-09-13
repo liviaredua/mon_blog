@@ -189,7 +189,8 @@ def management(request):
             {
                 'title': obj.articleTilte,
                 'description': obj.description,
-                'idArt': obj.id
+                'idArt': obj.id, 
+                'image': obj.image.thumbnail.url
             } for obj in Articles.objects.all()]
 
     }
@@ -212,7 +213,8 @@ def detailArt(request, idArt):
             'title': choisenItem.title,
             'subtitle': choisenItem.subtitle,
             'year': choisenItem.year,
-            'description': choisenItem.description
+            'description': choisenItem.description,
+            'image': choisenItem.idArt.image.url
         }
     }
     return render(request, 'detailsArt.html', data)

@@ -1,5 +1,5 @@
+from xml.dom.minidom import Document
 from django.urls import path
-
 from blog.views import about, download, detail, news, tools, management, detailArt
 
 urlpatterns = [
