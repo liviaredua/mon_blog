@@ -218,3 +218,7 @@ def detailArt(request, idArt):
         }
     }
     return render(request, 'detailsArt.html', data)
+
+
+def Problema(request):
+    return render(request, 'problema.html')

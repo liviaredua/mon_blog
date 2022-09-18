@@ -120,7 +120,19 @@ span.ds-department{ color: #373737; font-weight: 500; font-size: 18px; padding-b
 .ds-copyright a{color: rgba(255,255,255,0.5);}
 .ds-copyright a:hover{ color: #F26464; }
 
+.caixa{
+	border-radius: 70px;
+	margin: 0.5rem;
+}
 
+#navbarNav li{
+	margin-left: 3rem;
+	margin-right: 3rem;
+}
+
+#navbarNav a{
+	text-align: center;
+}
 
 /*-------------------------------------------------------------------------------
  Responsive XS Style @media (max-width: 767px) 
